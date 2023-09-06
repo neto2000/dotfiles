@@ -1,45 +1,10 @@
---[[
-
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-
-Kickstart.nvim is *not* a distribution.
-
-Kickstart.nvim is a template for your own configuration.
-  The goal is that you can read every line of code, top-to-bottom, understand
-  what your configuration is doing, and modify it to suit your needs.
-
-  Once you've done that, you should start exploring, configuring and tinkering to
-  explore Neovim!
-
-  If you don't know anything about Lua, I recommend taking some time to read through
-  a guide. One possible example:
-  - https://learnxinyminutes.com/docs/lua/
-
-  And then you can explore or search through `:help lua-guide`
-
-
-Kickstart Guide:
-
-I have left several `:help X` comments throughout the init.lua
-You should run that command and read that help section for more information.
-
-In addition, I have some `NOTE:` items throughout the file.
-These are for you, the reader to help understand what is happening. Feel free to delete
-them once you know what you're doing, but they should serve as a guide for when you
-are first encountering a few different constructs in your nvim config.
-
-I hope you enjoy your Neovim journey,
-- TJ
-
-P.S. You can delete this when you're done too. It's your config now :)
---]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+vim.wo.relativenumber = true
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -191,6 +156,13 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    'ThePrimeagen/harpoon',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -303,6 +275,17 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
+
+
+-- Harpoon keymaps
+
+vim.keymap.set('n', '<leader>m', require("harpoon.mark").add_file)
+
+vim.keymap.set('n', '<leader>sm', require("harpoon.ui").toggle_quick_menu)
+
+vim.keymap.set('n', '<leader>1', function() require("harpoon.ui").nav_file(1) end)
+vim.keymap.set('n', '<leader>2', function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set('n', '<leader>3', function() require("harpoon.ui").nav_file(3) end)
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
@@ -487,15 +470,15 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
---    ['<Tab>'] = cmp.mapping(function(fallback)
---      if cmp.visible() then
---        cmp.select_next_item()
---      elseif luasnip.expand_or_locally_jumpable() then
---        luasnip.expand_or_jump()
---      else
---        fallback()
---      end
---    end, { 'i', 's' }),
+    --['<Tab>'] = cmp.mapping(function(fallback)
+    --  if cmp.visible() then
+    --    cmp.select_next_item()
+    --  elseif luasnip.expand_or_locally_jumpable() then
+    --    luasnip.expand_or_jump()
+    --  else
+    --    fallback()
+    --  end
+    --end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
