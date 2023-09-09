@@ -162,6 +162,9 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim'
     },
   },
+  {
+    'neto2000/auto-brackets.nvim',
+  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -286,6 +289,14 @@ vim.keymap.set('n', '<leader>sm', require("harpoon.ui").toggle_quick_menu)
 vim.keymap.set('n', '<leader>1', function() require("harpoon.ui").nav_file(1) end)
 vim.keymap.set('n', '<leader>2', function() require("harpoon.ui").nav_file(2) end)
 vim.keymap.set('n', '<leader>3', function() require("harpoon.ui").nav_file(3) end)
+
+-- auto-brackets keymaps
+
+vim.keymap.set('i', '{', function() require("auto-brackets").print_text("{}") end)
+vim.keymap.set('i', '(', function() require("auto-brackets").print_text("()") end)
+vim.keymap.set('i', '[', function() require("auto-brackets").print_text("[]") end)
+vim.keymap.set('i', '"', function() require("auto-brackets").print_text('""') end)
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
