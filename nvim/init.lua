@@ -96,10 +96,14 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    -- 'navarasu/onedark.nvim',
+    -- 'rebelot/kanagawa.nvim',
+    -- "ellisonleao/gruvbox.nvim",
+    "catppuccin/nvim",
     priority = 1000,
+    harpoon = false,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 
@@ -109,11 +113,14 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
-        theme = 'onedark',
+        icons_enabled = true,
+        theme = 'catppuccin',
         component_separators = '|',
         section_separators = '',
       },
+    },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
     },
   },
 
@@ -122,9 +129,8 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
+    main = "ibl",
+    opts = {      
     },
   },
 
@@ -164,6 +170,20 @@ require('lazy').setup({
   },
   {
     'neto2000/auto-brackets.nvim',
+  },
+  {
+    'ThePrimeagen/vim-be-good',
+  },
+  {
+    'nvim-tree/nvim-web-devicons',
+  },
+  -- nvim greeter (start page)
+  {
+    'startup-nvim/startup.nvim',
+    dependencies = {
+        'nvim-telescope/telescope.nvim',
+        'nvim-lua/plenary.nvim',
+    }
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -282,9 +302,9 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 
 -- Harpoon keymaps
 
-vim.keymap.set('n', '<leader>m', require("harpoon.mark").add_file)
+vim.keymap.set('n', '<leader>n', require("harpoon.mark").add_file)
 
-vim.keymap.set('n', '<leader>sm', require("harpoon.ui").toggle_quick_menu)
+vim.keymap.set('n', '<leader>m', require("harpoon.ui").toggle_quick_menu)
 
 vim.keymap.set('n', '<leader>1', function() require("harpoon.ui").nav_file(1) end)
 vim.keymap.set('n', '<leader>2', function() require("harpoon.ui").nav_file(2) end)
@@ -505,6 +525,13 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+
+require("ibl").setup {
+  indent = {char = '┊'},
+}
+
+require("startup").setup({theme = "dashboard"})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

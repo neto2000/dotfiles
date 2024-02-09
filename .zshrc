@@ -111,6 +111,7 @@ source $ZSH/oh-my-zsh.sh
 alias v="nvim"
 alias h="~/"
 alias c="clear"
+alias n="kitty --detach"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
