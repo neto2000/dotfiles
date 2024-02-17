@@ -178,12 +178,71 @@ require('lazy').setup({
     'nvim-tree/nvim-web-devicons',
   },
   -- nvim greeter (start page)
+  -- {
+  --   'startup-nvim/startup.nvim',
+  --   dependencies = {
+  --       'nvim-telescope/telescope.nvim',
+  --       'nvim-lua/plenary.nvim',
+  --   }
+  -- },
+  
   {
-    'startup-nvim/startup.nvim',
-    dependencies = {
-        'nvim-telescope/telescope.nvim',
-        'nvim-lua/plenary.nvim',
+  "nvimdev/dashboard-nvim",
+  event = "VimEnter",
+  opts = function()
+    local logo = [[
+    ███╗  ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+    ████╗ ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+    ██╔██╗██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+    ██║╚████║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+    ██║ ╚███║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+    ╚═╝  ╚══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+    - Neto -
+    ]]
+
+    logo = string.rep("\n", 8) .. logo .. "\n\n"
+
+    local opts = {
+      theme = "doom",
+      hide = {
+        statusline = false,
+      },
+      config = {
+        header = vim.split(logo, "\n"),
+        center = {
+          { action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
+          { action = "Telescope git_files", desc = " Find git files", icon = "󰊢 ", key = "g" },
+          { action = "ene | startinsert", desc = " New file", icon = " ", key = "n" },
+          { action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "r" },
+          { action = "e $MYVIMRC", desc = " Config", icon = " ", key = "c" },
+          { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
+          { action = "qa", desc = " Quit", icon = " ", key = "q" },
+        },
+        footer = function()
+          local stats = require("lazy").stats()
+          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+          return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+        end,
+      },
     }
+
+    for _, button in ipairs(opts.config.center) do
+      button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+    end
+
+    if vim.o.filetype == "lazy" then
+      vim.cmd.close()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "DashboardLoaded",
+        callback = function()
+          require("lazy").show()
+        end,
+      })
+    end
+
+    return opts
+  end,
+
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -529,9 +588,113 @@ cmp.setup {
 
 require("ibl").setup {
   indent = {char = '┊'},
+
+  exclude = {
+    filetypes = {'dashboard'}
+  }
 }
 
-require("startup").setup({theme = "dashboard"})
+
+
+require('lualine').setup {
+
+  options = {
+      icons_enabled = true,
+      theme = "catppuccin",
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
+      disabled_filetypes = {
+        winbar = {},
+      },
+      ignore_focus = {},
+      always_divide_middle = true,
+      globalstatus = false,
+      refresh = {
+        statusline = 1000,
+        tabline = 1000,
+        winbar = 1000,
+      },
+  },
+    sections = {
+      lualine_a = {
+        {
+          "mode",
+          icon = '',
+          separator = { left = "", right = "" },
+          color = {
+            fg = "#1c1d21",
+            --bg = "#b4befe",
+          },
+        },
+      },
+      lualine_b = {
+        {
+          "branch",
+          icon = "",
+          separator = { left = "", right = "" },
+          color = {
+            -- fg = "#1c1d21",
+            --bg = "#7d83ac",
+            bg = "#313244"
+          },
+        },
+        {
+          "diff",
+          separator = { left = "", right = "" },
+          color = {
+            fg = "#1c1d21",
+            bg = "#313244",
+          },
+        },
+      },
+      lualine_c = {
+        {
+          "diagnostics",
+          separator = { left = "", right = "" },
+          color = {
+            bg = "#45475a",
+          },
+        },
+        {
+          "filename",
+        },
+      },
+      lualine_x = { "filesize" },
+      lualine_y = {
+        {
+          "filetype",
+          icons_enabled = true,
+          color = {
+            fg = "#cdd6f4",
+            bg = "#313244",
+          },
+        },
+      },
+      lualine_z = {
+        {
+          "location",
+          icon = "",
+          color = {
+            fg = "#1c1d21",
+            --bg = "#f2cdcd",
+            bg = "#b4befe",
+          },
+        },
+      },
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = { "filename" },
+      lualine_x = { "location" },
+      lualine_y = {},
+      lualine_z = {},
+    },
+    tabline = {},
+    winbar = {},
+    inactive_winbar = {},
+    extensions = { "neo-tree", "lazy" },
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

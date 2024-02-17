@@ -6,7 +6,7 @@
  - rofi
  - feh (backgrounds)
  - lxappearance (theme selector)
- - firefox (with https://github.com/rafaelmardojai/firefox-gnome-theme and nighttab)
+ - firefox (with https://github.com/rafaelmardojai/firefox-gnome-theme and nighttab or this ?https://amanhex.github.io/startpage/?)
  - kitty (terminal)
  - picom
  - lightdm-gtk-greeter-settings (DM settings)
