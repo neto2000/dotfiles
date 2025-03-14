@@ -22,6 +22,21 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
+
+
+-- pin nvim to a specific node version, regardless of the project
+-- prereq - need to install: nvm i 16.17.1
+local node_bin =  "/.nvm/versions/node/v22.4.0/bin"
+vim.g.node_host_prog = "/home/neto" .. node_bin .. "/node"
+
+-- for mason.nvim
+-- prereq - install lsp server in that node/bin npm i -g typescript-language-server 
+-- (handled by :Mason currently)
+vim.cmd("let $PATH = '" .. "/home/neto" .. node_bin .. ":' . $PATH")
+
+
+
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
