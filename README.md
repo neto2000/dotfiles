@@ -1,8 +1,17 @@
+# window manager
+ - hyprland (wayland)
+ - bspwm (x11)
+
+# display manager
+ - SDDM
+ - Theme: sddm-astronaut-theme (https://github.com/Keyitdev/sddm-astronaut-theme)
+
+
 # Programs
- - bspwm (window manager)
+ - bspwm / hyprland (window manager)
  - zsh (with oh-my-zsh and powerlevel10 theme)
  - nvim (with kickstarter nvim)
- - polybar
+ - polybar / waybar
  - rofi
  - feh (backgrounds)
  - lxappearance (theme selector)
@@ -13,10 +22,14 @@
  - unzip
  - xdotool
  - xrandr
+ - zoxide (better cd)
+ - yazi (terminal file manager)
+ - btop (task manager)
 
 # Themes/Fonts/Icons
- - Theme: NordicV40
+ - Theme: NordicV40 + Catpuccin
  - Icons: Papirus
+ - Cursor: Bibata
  ### Fonts: 
   - FiraCode NerdFont
   - JetBrains NerdFont
