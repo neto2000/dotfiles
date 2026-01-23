@@ -33,7 +33,7 @@ vim.opt.rtp:prepend(lazypath)
 -- for mason.nvim
 -- prereq - install lsp server in that node/bin npm i -g typescript-language-server 
 -- (handled by :Mason currently)
-vim.cmd("let $PATH = '" .. "/home/neto" .. node_bin .. ":' . $PATH")
+--vim.cmd("let $PATH = '" .. "/home/neto" .. node_bin .. ":' . $PATH")
 
 
 
