@@ -27,8 +27,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- pin nvim to a specific node version, regardless of the project
 -- prereq - need to install: nvm i 16.17.1
-local node_bin =  "/.nvm/versions/node/v22.4.0/bin"
-vim.g.node_host_prog = "/home/neto" .. node_bin .. "/node"
+--local node_bin =  "/.nvm/versions/node/v22.4.0/bin"
+--vim.g.node_host_prog = "/home/neto" .. node_bin .. "/node"
 
 -- for mason.nvim
 -- prereq - install lsp server in that node/bin npm i -g typescript-language-server 
@@ -152,7 +152,7 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
@@ -294,6 +294,18 @@ vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
+
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"typescript", "typescriptreact", "svelte"},
+  callback = function ()
+    vim.b.sleuth_automatic = false
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+  end,
+})
+
 
 -- Save undo history
 vim.o.undofile = true
