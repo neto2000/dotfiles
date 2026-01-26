@@ -25,6 +25,7 @@
  - zoxide (better cd)
  - yazi (terminal file manager)
  - btop (task manager)
+ - ristretto (image viewer)
 
 # Themes/Fonts/Icons
  - Theme: NordicV40 + Catpuccin
