@@ -2,6 +2,7 @@
  - hyprland (wayland)
  - bspwm (x11)
 
+
 # display manager
  - SDDM
  - Theme: sddm-astronaut-theme (https://github.com/Keyitdev/sddm-astronaut-theme)
