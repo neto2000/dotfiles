@@ -1,0 +1,16 @@
+add_newline = false
+
+format  = """
+$directory\
+$nixshell\
+$git_branch\
+$git_status\
+$shell
+$character
+"""
+
+[git_branch]
+symbol = ' '
+ignore_branches = ['master', 'main']
+
+format = '[$symbol$branch(:$remote_branch)]($style) '
