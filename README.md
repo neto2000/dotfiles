@@ -1,37 +1,42 @@
 # window manager
  - hyprland (wayland)
- - bspwm (x11)
 
 
 # display manager
  - SDDM
- - Theme: sddm-astronaut-theme (https://github.com/Keyitdev/sddm-astronaut-theme)
+ - Theme: Silent SDDM (https://github.com/uiriansan/SilentSDDM)
 
 
 # Programs
- - bspwm / hyprland (window manager)
- - zsh (with oh-my-zsh and powerlevel10 theme)
- - nvim (with kickstarter nvim)
- - polybar / waybar
- - rofi
- - feh (backgrounds)
- - lxappearance (theme selector)
+ - hyprland (window manager)
+ - hyprpaper (backgrounds)
+ - zsh (with starship prompt)
+ - nvim
+ - DankMaterialShell (Shell for Taskbar, Lock screen, notifications, etc.)
  - firefox (with https://github.com/rafaelmardojai/firefox-gnome-theme and nighttab or this ?https://amanhex.github.io/startpage/?)
- - kitty (terminal)
- - picom
- - lightdm-gtk-greeter-settings (DM settings)
+ - alacritty (terminal)
  - unzip
- - xdotool
- - xrandr
  - zoxide (better cd)
  - yazi (terminal file manager)
+ - nautilus (file manager)
  - btop (task manager)
  - ristretto (image viewer)
+ - bitwarden (password manager)
+ - obsidian (notes)
+
+ - systemd-boot
+ - pipewire / wireplumber (audio server)
+ - lightdm-gtk-greeter-settings (DM settings)
+ - nwg-look (theme selector)
+ - wl-clipboard
+ - ufw (firewall)
+ - nvidia-open driver
 
 # Themes/Fonts/Icons
- - Theme: NordicV40 + Catpuccin
+ - Theme: Kanagawa.nvim
  - Icons: Papirus
  - Cursor: Bibata
+
  ### Fonts: 
   - FiraCode NerdFont
   - JetBrains NerdFont
