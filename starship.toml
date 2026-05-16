@@ -9,8 +9,16 @@ $shell
 $character
 """
 
+[directory]
+read_only = ""
+
 [git_branch]
 symbol = ' '
 ignore_branches = ['master', 'main']
 
 format = '[$symbol$branch(:$remote_branch)]($style) '
+
+[git_status]
+format = '[$all_status$ahead_behind]($style) '
+
+deleted = ""

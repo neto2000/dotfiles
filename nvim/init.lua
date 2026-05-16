@@ -60,10 +60,39 @@ vim.pack.add({
 
     url .. 'catgoose/nvim-colorizer.lua',
 
-    url .. 'catppuccin/nvim'
+    url .. 'rebelot/kanagawa.nvim'
 })
 
-vim.cmd.colorscheme('catppuccin')
+
+require("kanagawa").setup({
+
+    colors = {
+
+        palette = {
+
+            sumiInk0 = "#0d0c0c",
+            sumiInk1 = "#12120f",
+            sumiInk2 = "#1D1C19",
+            sumiInk3 = "#181616",
+            sumiInk4 = "#282727",
+            sumiInk5 = "#393836",
+            sumiInk6 = "#625e5a",
+        },
+        theme = {
+
+            wave = {
+
+                syn = {
+
+                    operator = "#E46876"
+                }
+            }
+        }
+    }
+})
+
+require("kanagawa").load()
+
 
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -80,7 +109,13 @@ require("nvim-autopairs").setup({})
 
 require("colorizer").setup({})
 
--- treesitter ??
+
+-- treesitter
+vim.pack.add({ url .. "nvim-treesitter/nvim-treesitter" })
+
+-- equivalent to :TSUpdate
+require("nvim-treesitter.install").update("all")
+
 
 
 -- autocompletion
@@ -359,8 +394,7 @@ require('lualine').setup {
           icon = '',
           separator = { left = "", right = "" },
           color = {
-            fg = "#1c1d21",
-            --bg = "#b4befe",
+            -- fg = "#1c1d21",
           },
         },
       },
@@ -370,17 +404,15 @@ require('lualine').setup {
           icon = "",
           separator = { left = "", right = "" },
           color = {
-            -- fg = "#1c1d21",
-            --bg = "#7d83ac",
-            bg = "#313244"
+            -- bg = "#313244"
           },
         },
         {
           "diff",
           separator = { left = "", right = "" },
           color = {
-            fg = "#1c1d21",
-            bg = "#313244",
+            -- fg = "#1c1d21",
+            -- bg = "#313244",
           },
         },
       },
@@ -389,7 +421,7 @@ require('lualine').setup {
           "diagnostics",
           separator = { left = "", right = "" },
           color = {
-            bg = "#45475a",
+            -- bg = "#45475a",
           },
         },
         {
@@ -402,8 +434,8 @@ require('lualine').setup {
           "filetype",
           icons_enabled = true,
           color = {
-            fg = "#cdd6f4",
-            bg = "#313244",
+            -- fg = "#cdd6f4",
+            -- bg = "#313244",
           },
         },
       },
@@ -412,9 +444,8 @@ require('lualine').setup {
           "location",
           icon = "",
           color = {
-            fg = "#1c1d21",
-            --bg = "#f2cdcd",
-            bg = "#b4befe",
+            -- fg = "#1c1d21",
+            -- bg = "#b4befe",
           },
         },
       },
