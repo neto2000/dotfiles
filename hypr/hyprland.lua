@@ -17,14 +17,14 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
     output   = "DP-1",
-    mode     = "1920x1080@71.91",
+    mode     = "1920x1080@72",
     position = "0x0",
     scale    = "1",
 })
 
 hl.monitor({
     output   = "DP-2",
-    mode     = "2560x1440@164.55",
+    mode     = "2560x1440@165",
     position = "1920x-360",
     scale    = "1",
 })
@@ -59,6 +59,7 @@ local menu        = "dms ipc call spotlight toggle"
 hl.on("hyprland.start", function () 
   hl.exec_cmd("dms run")
   hl.exec_cmd("hyprpaper")
+  hl.exec_cmd("signal-desktop --start-in-tray")
 end)
 
 
@@ -215,6 +216,11 @@ hl.config({
     },
 })
 
+hl.config({
+  xwayland = {
+    force_zero_scaling = true
+  }
+})
 ----------------
 ----  MISC  ----
 ----------------
@@ -276,6 +282,7 @@ local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("obsidian"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("dms ipc call lock lock"))
