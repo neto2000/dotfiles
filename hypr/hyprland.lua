@@ -58,7 +58,6 @@ local menu        = "dms ipc call spotlight toggle"
 --
 hl.on("hyprland.start", function () 
   hl.exec_cmd("dms run")
-  hl.exec_cmd("hyprpaper")
   hl.exec_cmd("signal-desktop --start-in-tray")
 end)
 
@@ -131,7 +130,7 @@ hl.config({
 
         shadow = {
             enabled      = true,
-            range        = 4,
+            range        = 6,
             render_power = 3,
             color        = 0xee1a1a1a,
         },
@@ -296,6 +295,12 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
+hl.bind(mainMod .. " + A",  hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + D", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + W",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + S",  hl.dsp.focus({ direction = "down" }))
+
+
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 
@@ -381,5 +386,21 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+
+hl.on("hyprland.start", function () 
+  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+end)
+
+
+hl.layer_rule({
+    match        = { namespace = "dms:control-center" },
+    animation    = "slide right",
+})
+
+hl.layer_rule({
+    match        = { namespace = "dms:app-launcher" },
+    animation    = "slide left",
 })
 
