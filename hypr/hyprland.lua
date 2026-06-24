@@ -301,6 +301,9 @@ hl.bind(mainMod .. " + W",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + S",  hl.dsp.focus({ direction = "down" }))
 
 
+-- screenshot
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
+
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 
