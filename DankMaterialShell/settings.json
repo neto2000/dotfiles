@@ -142,7 +142,7 @@
   "workspaceUnfocusedColorMode": "default",
   "workspaceUrgentColorMode": "default",
   "workspaceFocusedBorderEnabled": false,
-  "workspaceFocusedBorderColor": "primary",
+  "workspaceFocusedBorderColor": "secondary",
   "workspaceFocusedBorderThickness": 2,
   "workspaceNameIcons": {},
   "waveProgressEnabled": true,
@@ -386,11 +386,17 @@
   "updaterTerminalAdditionalParams": "",
   "displayNameMode": "system",
   "screenPreferences": {
-    "wallpaper": [],
+    "wallpaper": [
+      "all"
+    ],
     "notifications": [
       {
         "name": "DP-2",
         "model": "MSI G27CQ4 E2"
+      },
+      {
+        "name": "DP-1",
+        "model": "S24R35xFZ"
       }
     ],
     "notepad": [
@@ -436,11 +442,11 @@
           "enabled": true
         },
         {
-          "id": "cpuUsage",
+          "id": "memUsage",
           "enabled": true
         },
         {
-          "id": "memUsage",
+          "id": "dankPomodoroTimer",
           "enabled": true
         },
         {
@@ -457,8 +463,8 @@
         }
       ],
       "spacing": 2,
-      "innerPadding": 14,
-      "bottomGap": -12,
+      "innerPadding": 15,
+      "bottomGap": -14,
       "transparency": 0,
       "widgetTransparency": 1,
       "squareCorners": false,
@@ -466,7 +472,7 @@
       "maximizeWidgetIcons": false,
       "maximizeWidgetText": false,
       "removeWidgetPadding": false,
-      "widgetPadding": 12,
+      "widgetPadding": 15,
       "gothCornersEnabled": false,
       "gothCornerRadiusOverride": false,
       "gothCornerRadiusValue": 12,
@@ -486,15 +492,15 @@
       "openOnOverview": false,
       "visible": true,
       "popupGapsAuto": true,
-      "popupGapsManual": 4,
+      "popupGapsManual": 50,
       "maximizeDetection": true,
       "scrollEnabled": true,
       "scrollXBehavior": "column",
       "scrollYBehavior": "workspace",
       "shadowIntensity": 0,
-      "shadowOpacity": 60,
-      "shadowColorMode": "text",
-      "shadowCustomColor": "#000000",
+      "shadowOpacity": 100,
+      "shadowColorMode": "custom",
+      "shadowCustomColor": "#ff0000",
       "clickThrough": false
     },
     {

@@ -1,0 +1,15 @@
+{
+    "id": "custom_appearance",
+    "name": "Dank Pomodoro Timer",
+    "description": "Productivity timer with 25-minute work sessions and breaks",
+    "version": "0.0.1",
+    "license": "MIT",
+    "author": "Neto",
+    "icon": "timer",
+    "firstParty": true,
+    "component": "./Overwrite.qml",
+    "permissions": [
+        "settings_read",
+        "settings_write"
+    ]
+}

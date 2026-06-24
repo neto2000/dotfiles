@@ -1,0 +1,11 @@
+{
+  "dankPomodoroTimer": {
+    "enabled": true
+  },
+  "hiddenBar": {
+    "enabled": false
+  },
+  "custom_appearance": {
+    "enabled": true
+  }
+}

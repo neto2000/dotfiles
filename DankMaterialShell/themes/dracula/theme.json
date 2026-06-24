@@ -5,9 +5,9 @@
   "author": "neto2000",
   "description": "Custom Kanagawa theme",
   "dark": {
-    "primary": "#957FB8",
+    "primary": "#BA5A5A",
     "primaryText": "#2A2A37",
-    "primaryContainer": "#957FB8",
+    "primaryContainer": "#744577",
     "secondary": "#D27E99",
     "surface": "#282727",
     "surfaceText": "#c5c9c5",
