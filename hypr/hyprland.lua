@@ -295,14 +295,25 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
+hl.bind(mainMod .. " + SHIFT + left",   hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + up",       hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + down",   hl.dsp.window.swap({ direction = "down" }))
+
+
 hl.bind(mainMod .. " + A",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + D", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + W",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + S",  hl.dsp.focus({ direction = "down" }))
 
+hl.bind(mainMod .. " + SHIFT + A",  hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.swap({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + W",    hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + S",  hl.dsp.window.swap({ direction = "down" }))
+
 
 -- screenshot
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
