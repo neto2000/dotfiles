@@ -24,7 +24,6 @@
  - libreoffice (office)
  - btop (task manager)
  - gthumb (image viewer)
- - bitwarden (password manager)
  - obsidian (notes)
  - flatpak
 
