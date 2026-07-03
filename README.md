@@ -47,6 +47,7 @@
   - HackNerdFont
 
   - noto-fonts-emoji
+  - noto-fonts-cjk (japanese symbols)
   
 
 # Setup
