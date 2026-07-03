@@ -9,37 +9,50 @@
 
 # Programs
  - hyprland (window manager)
- - hyprpaper (backgrounds)
- - zsh (with starship prompt)
+ - zsh (with **starship** prompt)
  - nvim
- - DankMaterialShell (Shell for Taskbar, Lock screen, notifications, etc.)
- - firefox (with https://github.com/rafaelmardojai/firefox-gnome-theme and nighttab or this ?https://amanhex.github.io/startpage/?)
+ - DankMaterialShell (Shell for Taskbar, Lock screen, notifications, wallpaper, etc.)
+ - firefox (browser)
  - alacritty (terminal)
  - unzip
+ - gcc
+ - rsync (backups)
  - zoxide (better cd)
  - yazi (terminal file manager)
+ - nix (nix-shell)
  - nautilus (file manager)
+ - libreoffice (office)
  - btop (task manager)
- - ristretto (image viewer)
+ - gthumb (image viewer)
  - bitwarden (password manager)
  - obsidian (notes)
+ - flatpak
 
  - systemd-boot
  - pipewire / wireplumber (audio server)
- - lightdm-gtk-greeter-settings (DM settings)
+ - bluez (bluetooth server)
  - nwg-look (theme selector)
+ - xdg-desktop-portal-wlr (important for screensharing)
  - wl-clipboard
  - ufw (firewall)
- - nvidia-open driver
+ - nvidia-open (driver)
 
 # Themes/Fonts/Icons
  - Theme: Kanagawa.nvim
- - Icons: Papirus
+ - Icons: Adwaita
  - Cursor: Bibata
 
  ### Fonts: 
   - FiraCode NerdFont
   - JetBrains NerdFont
   - HackNerdFont
+
+  - noto-fonts-emoji
   
 
+# Setup
+
+ - **Follow the Arch Wiki!**
+
+ - setup a firewall with ufw
+ - trim the ssd periodically
