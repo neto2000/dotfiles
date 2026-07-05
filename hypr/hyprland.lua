@@ -346,10 +346,10 @@ hl.bind("XF86MonBrightnessUp",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+")
 hl.bind("XF86MonBrightnessDown",hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
 
 
-hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("dms ipc call mpris previous"), { locked = true })
+hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("dms ipc call mpris next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("dms ipc call mpris playPause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("dms ipc call mpris playPause"), { locked = true })
-hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("dms ipc call mpris next"),   { locked = true })
+hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("dms ipc call mpris previous"),   { locked = true })
 
 
 --------------------------------
