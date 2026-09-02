@@ -59,6 +59,7 @@ local menu        = "dms ipc call spotlight toggle"
 hl.on("hyprland.start", function () 
   hl.exec_cmd("dms run")
   hl.exec_cmd("signal-desktop --start-in-tray")
+  hl.exec_cmd("syncthing --no-browser")
 end)
 
 
@@ -68,8 +69,8 @@ end)
 
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_SIZE", "20")
+hl.env("HYPRCURSOR_SIZE", "20")
 
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
@@ -156,7 +157,7 @@ hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}
 hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1}     } })
 
 -- Default springs
-hl.curve("easy",           { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
+hl.curve("easy",           { type = "spring", mass = 1, stiffness = 238.1191, dampening = 24.21279333 })
 
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "default" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
@@ -176,23 +177,6 @@ hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "
 hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
 
--- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
--- "Smart gaps" / "No gaps when only"
--- uncomment all if you wish to use that.
--- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
--- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
--- hl.window_rule({
---     name  = "no-gaps-wtv1",
---     match = { float = false, workspace = "w[tv1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
--- hl.window_rule({
---     name  = "no-gaps-f1",
---     match = { float = false, workspace = "f[1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
@@ -284,7 +268,7 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("obsidian"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("dms ipc call lock lock"))
+hl.bind(mainMod .. " + numbersign", hl.dsp.exec_cmd("dms ipc call lock lock"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
@@ -301,19 +285,19 @@ hl.bind(mainMod .. " + SHIFT + up",       hl.dsp.window.swap({ direction = "up" 
 hl.bind(mainMod .. " + SHIFT + down",   hl.dsp.window.swap({ direction = "down" }))
 
 
-hl.bind(mainMod .. " + A",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + D", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + W",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + S",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + H",  hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + K",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + J",  hl.dsp.focus({ direction = "down" }))
 
-hl.bind(mainMod .. " + SHIFT + A",  hl.dsp.window.swap({ direction = "left" }))
-hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.swap({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + W",    hl.dsp.window.swap({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + S",  hl.dsp.window.swap({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + H",  hl.dsp.window.swap({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + K",    hl.dsp.window.swap({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + J",  hl.dsp.window.swap({ direction = "down" }))
 
 
 -- screenshot
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -321,17 +305,32 @@ hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl
 
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = "r~" .. i}))
-    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = "r~" .. i }))
+
+    hl.bind(mainMod .. " + " .. key,    function()
+        
+        local monitor = hl.get_active_monitor()
+        
+        hl.dispatch(hl.dsp.focus({ workspace = monitor.id + 1 + 3 * (key - 1) }))
+
+    end)
+    
+    hl.bind(mainMod .. " + SHIFT + " .. key,    function()
+        
+        local monitor = hl.get_active_monitor()
+        
+        hl.dispatch(hl.dsp.window.move({ workspace = monitor.id + 1 + 3 * (key - 1) }))
+
+    end)
+
 end
 
 
 -- Scroll through the monitors with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ monitor = "-1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ monitor = "+1" }))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ monitor = "+1" }))
+hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ monitor = "-1" }))
 
-hl.bind(mainMod .. " + SHIFT + mouse_down",   hl.dsp.window.move({ monitor = "-1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_up",   hl.dsp.window.move({ monitor = "+1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_down",   hl.dsp.window.move({ monitor = "+1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_up",   hl.dsp.window.move({ monitor = "-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
